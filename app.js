@@ -10,7 +10,17 @@ var LocalStrategy=require("passport-local");
 var Campground=require("./models/campground");
 var Comment=require("./models/comment");
 var User=require("./models/user");
-mongoose.connect("mongodb://localhost:27017/yelp_camp",({useNewUrlParser:true,useUnifiedTopology: true}));
+
+mongoose.connect("mongodb+srv://UDIT:udit123@cluster0.bkwum.mongodb.net/<yelp_camp>?retryWrites=true&w=majority",{
+    useNewUrlParser:true,
+    useUnifiedTopology: true,
+    useCreateIndex:true
+}).then(() => {
+    console.log("Db started");
+}).catch(err => {
+    console.log("err"+err.message);
+});
+
 var commentRoutes = require("./routes/comments");
 var campgroundRoutes= require("./routes/campgrounds");
 var indexRoutes = require("./routes/index");
@@ -57,6 +67,6 @@ app.use(indexRoutes);
 app.use("/campgrounds",campgroundRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 
-app.listen(process.env.PORT,process.env.IP,function(){
+app.listen(process.env.PORT||3000,process.env.IP,function(){
     console.log("Server has started");
 });
