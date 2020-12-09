@@ -25,7 +25,10 @@
                   </li>
                 <% } else { %>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Currently signed in as <%= currentUser.username %></a>
+                    <a class="nav-link" href="#"><b>Currently signed in as <%= currentUser.username %></b></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/campgrounds">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
