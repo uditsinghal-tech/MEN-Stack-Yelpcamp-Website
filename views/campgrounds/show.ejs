@@ -15,12 +15,11 @@
                 <div class="caption">
                     <div class="d-flex justify-content-between">
                         <h4><a><%=campground.name%></a></h4>
-                        <h4>99$</h4>
                     </div>
                     <p><%=campground.description %></p>
-                    <p>Submitted By <%=campground.author.username %></p>
+                    <p><b>Submitted By <%=campground.author.username %></b></p>
                     <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
-                        <a class="btn btn-danger" href="/campgrounds/<%=campground._id%>/edit">Click to edit</a>
+                        <a class="btn btn-danger" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
                         <form style="display:inline;"action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
                         <button class="btn btn-success">Delete</button>
                          </form>
@@ -30,7 +29,7 @@
             </div>
             <div class="bg-light mt-4" id="pad">
             <div style="text-align:right;">
-            <a class="btn btn-success" href="/campgrounds/<%=campground._id %>/comments/new">click for comment</a>
+            <a class="btn btn-success" href="/campgrounds/<%=campground._id %>/comments/new">Add New Comment</a>
             </div>
             <hr>
                 <% campground.comments.forEach(function(comment){ %>
@@ -40,8 +39,8 @@
                                 <strong><%= comment.author.username %></strong>
                                 <div><%= comment.text %></div>
                             </div>
-                            <div>10 days ago</div>
-                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                            
+                            <% if(currentUser && comment.author.username==currentUser.username){ %>
                             <a class="btn btn-success" href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit">Edit</a>
                             <form action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
                                 <button class="btn btn-danger" style=>DELETE</button>

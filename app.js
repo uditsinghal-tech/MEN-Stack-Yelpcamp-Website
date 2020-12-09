@@ -10,8 +10,8 @@ var LocalStrategy=require("passport-local");
 var Campground=require("./models/campground");
 var Comment=require("./models/comment");
 var User=require("./models/user");
-// mongoose.connect("mongodb://localhost:27017/yelp_camp",({useNewUrlParser:true,useUnifiedTopology: true}));
-mongoose.connect(process.env.DATABASEURL,{useNewUrlParser:true,useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/yelp_camp",({useNewUrlParser:true,useUnifiedTopology: true}));
+//mongoose.connect(process.env.DATABASEURL,{useNewUrlParser:true,useUnifiedTopology: true});
 // console.log(process.env.DATABASEURL);
 
 
