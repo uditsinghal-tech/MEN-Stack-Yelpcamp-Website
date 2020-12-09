@@ -24,16 +24,6 @@ mongoose.connect(process.env.DATABASEURL,{useNewUrlParser:true,useUnifiedTopolog
 //console.log(process.env.DATABASEURL);
 
 
-// mongoose.connect("mongodb+srv://UDIT:udit123@cluster0.bkwum.mongodb.net/<yelp_camp>?retryWrites=true&w=majority",{
-//     useNewUrlParser:true,
-//     useUnifiedTopology: true,
-//     useCreateIndex:true
-// }).then(() => {
-//     console.log("Db started");
-// }).catch(err => {
-//     console.log("err"+err.message);
-// });
-
 var commentRoutes = require("./routes/comments");
 var campgroundRoutes= require("./routes/campgrounds");
 var indexRoutes = require("./routes/index");
